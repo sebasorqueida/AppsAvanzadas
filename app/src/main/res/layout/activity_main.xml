@@ -16,14 +16,17 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true">
+    </com.facebook.login.widget.LoginButton>
 
     <com.google.android.gms.ads.AdView
+        android:id="@+id/add_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/add_view"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        ads:adSize="BANNER" />
+        android:layout_centerHorizontal="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/id_banner">
+    </com.google.android.gms.ads.AdView>
 
 </RelativeLayout>
