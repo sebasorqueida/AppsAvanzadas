@@ -35,17 +35,20 @@ public class MainActivity extends AppCompatActivity {
         FacebookSdk.sdkInitialize(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
 
-        getFbKeyHash("1505686659503060");
+        getFbKeyHash("wpdHw7YvNMZjx52OudAvuijMWzU=");
 
         setContentView(R.layout.activity_main);
 
+        //Link banner with class
         adView = (AdView)findViewById(R.id.add_view);
 
         AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
         adView.loadAd(adRequest);
 
+        //Link facebook Login Button with class
         loginButton=(LoginButton)findViewById(R.id.login_facebook);
 
+        //facebook login
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -69,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //banner method on Destroy, on Pause and on Resume
     @Override
     protected void onDestroy() {
         if(adView!=null){
@@ -93,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
     }
 
+    //Method for KeyHash validation
     private void getFbKeyHash(String packageName) {
 
         try{
@@ -110,6 +115,8 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
+    //Send session login results al LoginManager throw CallBackManager
     protected void onActivityResult(int reqCode, int resCode, Intent i){
         callbackManager.onActivityResult(reqCode, resCode, i);
     }
